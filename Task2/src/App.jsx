@@ -1,12 +1,12 @@
-import React from "react";
-import ModelViewer from "./components/ModelViewer";
+import React, { Suspense, lazy } from "react";
+import Loader from "./components/loader/Loader";
 
-function App() {
+const Viewer = lazy(() => import("./pages/Viewer"));
+
+export default function App() {
   return (
-    <div className="App">
-      <ModelViewer />
-    </div>
+    <Suspense fallback={<Loader />}>
+      <Viewer />
+    </Suspense>
   );
 }
-
-export default App;
